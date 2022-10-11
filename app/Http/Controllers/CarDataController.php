@@ -17,5 +17,7 @@ class CarDataController extends Controller
             return view('car', ['car' => $objectCar ]);
         }
 
+        return "Please choose correct car id";
+
     }
 }
