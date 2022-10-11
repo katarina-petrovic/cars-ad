@@ -288,25 +288,23 @@
                             </table>
                         </div>
                         <div class="card c-brd-light mb-4">
-                            <div class="c-bg-light">
-                                <div class="card-body p-3">
+                            <div class="c-bg-ligth card-header">
+                                <div class="card-body p-2">
                                     <h6 class="mb-0">Contact Seller</h6>
                                 </div>
                             </div>
-                            <div class="card-body py-4 bg-white">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name">
+                            <div class="card-body text-center">
+                                <h5 class="my-3">{{$car->data->contact->firstName . " " . $car->data->contact->lastName}}</h5>
+                                <p class="text-muted mb-3">{{$car->data->contact->companyName}}</p>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <a class="btn btn-primary btn-xlg mr-1" href="tel:<?php echo $car->data->contact->phone; ?>">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                    </a>                                    
+                                    <a class="btn btn-primary btn-xlg" href="mailto:<?php echo $car->data->contact->email; ?>" target="_blank">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </a>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email">
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" placeholder="Message"></textarea>
-                                </div>
-                                <a href="#" class="btn btn-primary btn-lg text-uppercase"> Send Message</a>
                             </div>
                         </div>
                        
