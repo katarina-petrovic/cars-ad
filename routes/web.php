@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 
-Route::get("/car", [CarDataController::class, 'index']);
+Route::get("/car/{id}", [CarDataController::class, 'index']);

@@ -240,7 +240,7 @@
                                 <h4>{{ $car->data->car->make ." ". $car->data->car->specification}}</h4>
                                 <ul class="list-unstyled c-line-height-2_5 mb-0">
                                     <li><small class="c-light">Price</small> <h4 class="d-inline-block c-primary mb-1">
-                                        <?php echo $car->data->priceCurrency ? $car->data->priceCurrency : '$'; echo $car->data->priceOnRequest ? 'On request' :  $car->data->price;?>
+                                        <?php echo $car->data->priceOnRequest ? 'On request' :  ( $car->data->priceCurrency ? $car->data->priceCurrency : '$') . $car->data->price ;?>
                                         
                                     </h4></li>
                                     <li><i class="fa fa-map-marker pr-1"></i>{{$car->data->location->street .", ".$car->data->location->postalCode ." ".$car->data->location->city}}</li>
