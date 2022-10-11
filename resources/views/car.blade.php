@@ -23,13 +23,266 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.0/flexslider.css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.0/jquery.flexslider.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#carousel').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    itemWidth: 210,
+                    itemMargin: 5,
+                    asNavFor: '#slider'
+                });
+                
+                $('#slider').flexslider({
+                    animation: "slide",
+                    controlNav: false,
+                    animationLoop: false,
+                    slideshow: false,
+                    sync: "#carousel"
+                });
+            });
+        </script>
    
     </head>
     <body class="antialiased">
-            <?php
-                print_r($car);
-            ?>
+    <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-8 mb-4 mb-lg-0">
+                        <div class="car-listing">
+                            <div class="flexslider  mb-4">
+                                <div id="slider" class="flexslider">
+                                    <ul class="slides">
+                                    @foreach($car->data->standardImages as $key => $image)
+                                        <li>
+                                        <img src={{ $image->url }} />
+                                        </li>
+                                        @endforeach
+                                        <!-- items mirrored twice, total of 12 -->
+                                    </ul>
+                                </div>
+                                <div id="carousel" class="flexslider">
+                                    <ul class="slides">
+                                        @foreach($car->data->standardImages as $key => $image)
+                                            <li>
+                                                <img src={{ $image->url }} />
+                                            </li>
+                                        @endforeach
+
+                                        <!-- items mirrored twice, total of 12 -->
+                                    </ul>
+                                </div>
+                            </div>   
+                            <div class="c-bg-dark rounded-top">
+                                <ul class="nav nav-tabs border-0 flex-column flex-sm-row text-white" id="myTab" role="tablist">
+                                    <li class="nav-item mb-0 rounded-left">
+                                        <a class="nav-link redial-light border-0 py-3" data-toggle="tab" href="#description" role="tab" aria-expanded="true" aria-selected="false">Description</a>
+                                    </li>
+                                    <li class="nav-item mb-0">
+                                        <a class="nav-link redial-light rounded-0 border-0 py-3" data-toggle="tab" href="#specifications" role="tab" aria-expanded="false" aria-selected="false">Specifications</a>
+                                    </li>
+                                    <li class="nav-item mb-0">
+                                        <a class="nav-link redial-light rounded-0 border-0 py-3 active show" data-toggle="tab" href="#features" role="tab" aria-expanded="false" aria-selected="true">Features</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-content" id="myTabContent2">
+                                <div class="tab-pane fade" id="description" role="tabpanel" aria-expanded="true">
+                                    <div class="border c-brd-light border-top-0">
+                                        <div class="card-body pt-5">
+                                            {{ $car->data->description->en_GB }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="specifications" role="tabpanel" aria-expanded="false">
+                                    <div class="border c-brd-light border-top-0">
+                                        <div class="pt-4"></div>
+                                        <div class="list-header p-3">
+                                            <a href="#" class="d-block text-btn c-montserrat c-dark c-font-weight-500" data-toggle="collapse" data-target="#vehicle"><i class="fas fa-car-side pr-1"></i> Vehicle Data</a>
+                                        </div>
+                                        <div id="vehicle" class="collapse show widget-content">
+                                            <table class="table table-striped mb-0">
+                                            
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Make</td>
+                                                        <td>{{$car->data->car->make}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Model</td>
+                                                        <td>{{$car->data->car->model}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Model Name</td>
+                                                        <td>{{$car->data->car->specification}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Series</td>
+                                                        <td>{{$car->data->manufacturerCode}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Year of manufacture</td>
+                                                        <td>{{$car->data->yearOfProduction}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Chassis number</td>
+                                                        <td>{{$car->data->chassisNumber}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Condition category</td>
+                                                        <td>{{$car->data->stateCategory}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mileage (read)</td>
+                                                        <td>{{$car->data->mileageByUnit . " " .$car->data->mileageUnit}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>First registration</td>
+                                                        <td>{{$car->data->firstRegistrationDate}}</td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="list-header p-3">
+                                            <a href="#" class="d-block text-btn c-montserrat c-dark c-font-weight-500" data-toggle="collapse" data-target="#technical"><i class="fas fa-info-circle pr-1"></i> Technical details</a>
+                                        </div>
+                                        <div id="technical" class="collapse show widget-content">
+                                            <table class="table table-striped mb-0">
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td>Body style</td>
+                                                        <td>{{$car->data->car->body}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Power (hp)</td>
+                                                        <td>{{$car->data->horsepower}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Cubic capacity</td>
+                                                        <td>{{$car->data->cubicCapacity}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Cylinders</td>
+                                                        <td>{{$car->data->cylinder}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Doors</td>
+                                                        <td>{{$car->data->doors}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Transmission</td>
+                                                        <td>{{$car->data->gearbox}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Gears</td>
+                                                        <td>{{$car->data->gears}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fuel</td>
+                                                        <td>{{$car->data->fuel}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade active show" id="features" role="tabpanel" aria-expanded="false">
+                                    <div class="border c-brd-light border-top-0">
+                                        <div class="card-body pt-4">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card c-brd-light mb-4">
+                            <div class="card-body">
+                                <h4>{{ $car->data->car->make ." ". $car->data->car->specification}}</h4>
+                                <ul class="list-unstyled c-line-height-2_5 mb-0">
+                                    <li><small class="c-light">Price</small> <h4 class="d-inline-block c-primary mb-1">
+                                        <?php echo $car->data->priceCurrency ? $car->data->priceCurrency : '$'; echo $car->data->priceOnRequest ? 'On request' :  $car->data->price;?>
+                                        
+                                    </h4></li>
+                                    <li><i class="fa fa-map-marker pr-1"></i>{{$car->data->location->street .", ".$car->data->location->postalCode ." ".$car->data->location->city}}</li>
+                                </ul>
+                            </div>
+                            <table class="table mb-0 c-line-height-1_5 c-brd-light">
+                                <tbody>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Make:</td>
+                                        <td>{{$car->data->car->make}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Model:</td>
+                                        <td>{{$car->data->car->model}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Model Name:</td>
+                                        <td>{{$car->data->car->specification}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Year:</td>
+                                        <td>{{$car->data->yearOfProduction}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Fuel:</td>
+                                        <td>{{$car->data->fuel}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Transmission:</td>
+                                        <td>{{$car->data->gearbox}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Color:</td>
+                                        <td>{{$car->data->colorOutside}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Driven:</td>
+                                        <td>{{$car->data->mileageByUnit . " " .$car->data->mileageUnit}}   </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="c-dark c-font-weight-600 b-r"> Engine:</td>
+                                        <td>{{$car->data->cubicCapacity}} cc</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card c-brd-light mb-4">
+                            <div class="c-bg-light">
+                                <div class="card-body p-3">
+                                    <h6 class="mb-0">Contact Seller</h6>
+                                </div>
+                            </div>
+                            <div class="card-body py-4 bg-white">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Phone">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Message"></textarea>
+                                </div>
+                                <a href="#" class="btn btn-primary btn-lg text-uppercase"> Send Message</a>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>
