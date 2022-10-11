@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i");
+
+#slider {
+    margin-bottom: 0px;
+}
+
+#slider .slides img {
+    height: 500px;
+    object-fit: cover;
+}
+
+#carousel .slides img {
+    height: 140px;
+    object-fit: cover;
+}
+
+.flexslider {
+    margin-top: 0px;
+}
+
+.flex-direction-nav a {
+    height: 48px;
+}
+.nav-tabs .nav-link.active {
+    border-color: #ee5624;
+    background-color: #ee5624;
+    color: #fff;
+}
+.c-primary {
+    color: #ee5624;
+}
+.c-bg-dark {
+    background-color: #191f23;
+}
+
+.text-white {
+    color: #fff!important;
+}
+
+.nav-tabs .nav-link.active:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #ee5624;
+    width: 5px;
+    margin: 0 auto;
+    bottom: -8px;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-tabs .nav-link {
+    border-color: #dadada;
+    padding: 6px 25px;
+    position: relative;
+}
+
+.car-listing .list-header {
+    border-bottom: solid 2px #ee5624;
+}
+
+.car-listing .list-header .text-btn:after {
+    color: #000000;
+}
+.car-listing .nav-tabs .nav-link:hover {
+    color: #fff;
+}
+
+.text-btn:hover, .text-btn:focus {
+    color: #000000;
+    text-decoration: none;
+}
+
+a.text-btn {
+    color: #000000!important;
+}
+
+.green-sign {
+    color: green;
+}
+
+.red-sign {
+    color: red;
+}
+
+
