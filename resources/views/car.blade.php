@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.0/flexslider.css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.0/jquery.flexslider.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
         <script>
             $(document).ready(function() {
                 $('#carousel').flexslider({
@@ -197,7 +199,35 @@
                                 <div class="tab-pane fade active show" id="features" role="tabpanel" aria-expanded="false">
                                     <div class="border c-brd-light border-top-0">
                                         <div class="card-body pt-4">
-                                            
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6">
+                                                    <ul class="list-unstyled c-line-height-3 mb-0">
+                                                        <li><i class="fa <?php echo checkIcon($car->data->centralLocking); ?> c-primary pr-2"></i> Central locking</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->foldingRoof); ?> c-primary pr-2"></i> Folding Roof</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->electricWindows); ?> c-primary pr-2"></i> Electric Windows</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->airbag); ?> c-primary pr-2"></i> Airbag</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->abs); ?> c-primary pr-2"></i> ABS</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->airconditioning); ?> c-primary pr-2"></i> Air Conditioning</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->powerSteering); ?> c-primary pr-2"></i> Power Steering </li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->sunroof); ?> c-primary pr-2"></i> Sun Roof</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->heatedSeats); ?> c-primary pr-2"></i> Heated Seats</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->cruiseControl); ?> c-primary pr-2"></i> Cruise Control</li>
+                                                        
+                                                    </ul>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <ul class="list-unstyled c-line-height-3 mb-0">
+                                                        <li><i class="fa <?php echo checkIcon($car->data->licensed); ?> c-primary pr-2"></i> Licenced</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->readyToRide); ?> c-primary pr-2"></i> Ready to ride</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->milleMiglia); ?> c-primary pr-2"></i> Mille Miglia</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->mainInspection); ?> c-primary pr-2"></i> Main mainInspection</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->oldtimerLicensePlate); ?> c-primary pr-2"></i> License Plate</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->fiva); ?> c-primary pr-2"></i> Fiva</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->fia); ?> c-primary pr-2"></i> Fia</li>
+                                                        <li><i class="fa <?php echo checkIcon($car->data->accidentFree); ?> c-primary pr-2"></i> Accident Free</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
